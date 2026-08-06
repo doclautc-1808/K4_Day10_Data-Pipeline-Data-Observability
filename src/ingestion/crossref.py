@@ -85,7 +85,13 @@ def parse_crossref_payload(payload: dict) -> list[PaperRecord]:
         categories = [normalize_whitespace(str(subject)) for subject in item.get("subject", []) if subject]
         primary_category = categories[0] if categories else _normalize_text(item.get("type", ""))
 
-        published = _parse_date(item.get("published-print") or item.get("published-online") or item.get("issued") or item.get("created"))
+        published = _parse_date(
+            item.get("published-print")
+            or item.get("published-online")
+            or item.get("published")
+            or item.get("issued")
+            or item.get("created")
+        )
         updated = _parse_date(item.get("created") or item.get("issued") or item.get("published-online") or item.get("published-print"))
 
         abs_url = _normalize_text(item.get("URL", ""))

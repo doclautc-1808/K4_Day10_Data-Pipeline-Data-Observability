@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-08-06T09:20:27.771804+00:00",
+  "latest_published": "2026-08-01",
+  "oldest_published": "2026-02-12",
+  "stale_rows": 0,
+  "total_rows": 24,
+  "valid_published_rows": 22,
+  "missing_published_rows": 2,
+  "future_published_rows": 0,
+  "age_date_mismatch_rows": 0,
+  "freshness_threshold_days": 180,
+  "is_fresh": false,
+  "artifact_path": "D:\\AITHUCCHIEN\\K4_Day10_Data-Pipeline-Data-Observability\\data\\quality\\freshness_report.json"
+}
