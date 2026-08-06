@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T09:45:50.779336+00:00",
+  "generated_at": "2026-08-06T09:46:23.404102+00:00",
   "latest_published": "2026-08-01",
   "oldest_published": "2026-02-12",
   "stale_rows": 0,
@@ -10,5 +10,5 @@
   "age_date_mismatch_rows": 0,
   "freshness_threshold_days": 180,
   "is_fresh": false,
-  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/freshness_report.json"
+  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/repaired_freshness_report.json"
 }
