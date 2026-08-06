@@ -1,11 +1,11 @@
 {
-  "report_name": "baseline",
-  "generated_at": "2026-08-06T09:45:50.777585+00:00",
+  "report_name": "repaired",
+  "generated_at": "2026-08-06T09:46:23.403403+00:00",
   "success": false,
   "total_rows": 24,
   "passed_checks": 9,
   "failed_checks": 2,
-  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/baseline_quality_report.json",
+  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/repaired_quality_report.json",
   "checks": [
     {
       "name": "row_count_positive",

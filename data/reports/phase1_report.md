@@ -69,7 +69,7 @@ Failed checks: **2**
 
 ## Evidence
 
-- Quality artifact: `D:\AITHUCCHIEN\K4_Day10_Data-Pipeline-Data-Observability\data\quality\baseline_quality_report.json`
-- Freshness artifact: `D:\AITHUCCHIEN\K4_Day10_Data-Pipeline-Data-Observability\data\quality\freshness_report.json`
+- Quality artifact: `/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/baseline_quality_report.json`
+- Freshness artifact: `/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/freshness_report.json`
 
 This report is generated from the supplied artifacts; a PASS is not hard-coded.

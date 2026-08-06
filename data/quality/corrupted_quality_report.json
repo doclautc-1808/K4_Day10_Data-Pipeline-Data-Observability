@@ -1,11 +1,11 @@
 {
-  "report_name": "baseline",
-  "generated_at": "2026-08-06T09:45:50.777585+00:00",
+  "report_name": "corrupted",
+  "generated_at": "2026-08-06T09:46:23.214438+00:00",
   "success": false,
   "total_rows": 24,
-  "passed_checks": 9,
-  "failed_checks": 2,
-  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/baseline_quality_report.json",
+  "passed_checks": 5,
+  "failed_checks": 6,
+  "artifact_path": "/Users/binhtran23/Documents/Vin_uni/K4_Day10_Data-Pipeline-Data-Observability/data/quality/corrupted_quality_report.json",
   "checks": [
     {
       "name": "row_count_positive",
@@ -34,8 +34,8 @@
     {
       "name": "paper_id_unique",
       "dimension": "uniqueness",
-      "success": true,
-      "observed_value": 0,
+      "success": false,
+      "observed_value": 4,
       "expectation": "rows participating in duplicate paper_id groups must equal 0",
       "details": "Comparison is case-insensitive and ignores surrounding whitespace."
     },
@@ -50,8 +50,8 @@
     {
       "name": "summary_not_empty",
       "dimension": "completeness",
-      "success": true,
-      "observed_value": 0,
+      "success": false,
+      "observed_value": 1,
       "expectation": "missing or blank summary count must equal 0",
       "details": ""
     },
@@ -66,16 +66,16 @@
     {
       "name": "summary_min_length",
       "dimension": "validity",
-      "success": true,
-      "observed_value": 0,
+      "success": false,
+      "observed_value": 1,
       "expectation": "every summary must contain at least 50 characters",
-      "details": "minimum observed length: 834"
+      "details": "minimum observed length: 0"
     },
     {
       "name": "published_date_valid",
       "dimension": "validity",
       "success": false,
-      "observed_value": 2,
+      "observed_value": 5,
       "expectation": "unparseable or missing published date count must equal 0",
       "details": ""
     },
@@ -90,8 +90,8 @@
     {
       "name": "records_are_fresh",
       "dimension": "freshness",
-      "success": true,
-      "observed_value": 0,
+      "success": false,
+      "observed_value": 3,
       "expectation": "no row may exceed 180 days",
       "details": ""
     }
