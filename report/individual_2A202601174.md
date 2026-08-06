@@ -6,13 +6,13 @@
 
 | Thông tin         | Nội dung                  |
 | ------------------ | -------------------------- |
-| Họ và tên       | [Họ và tên]             |
-| MSSV               | [MSSV]                     |
-| Khóa/Lớp         | [K3 hoặc K4]              |
-| Tên nhóm         | [Tên hoặc mã nhóm]     |
-| Vai trò chính    | [Vai trò]                 |
-| Repository         | [Đường dẫn repository] |
-| Ngày hoàn thành | [YYYY-MM-DD]               |
+| Họ và tên       | Trần Thanh Bình             |
+| MSSV               | 2A202601174 |
+| Khóa/Lớp         | K4 |
+| Tên nhóm         | A8 |
+| Vai trò chính    | Evaluation & observability |
+| Repository         | https://github.com/doclautc-1808/K4_Day10_Data-Pipeline-Data-Observability |
+| Ngày hoàn thành | 2026-08-06 |
 
 ## 2. Vai trò và phạm vi công việc
 
