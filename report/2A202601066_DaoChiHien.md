@@ -4,11 +4,11 @@
 
 | Thông tin | Nội dung |
 | --- | --- |
-| Họ và tên | Trần Thanh Bình |
-| MSSV | 2A202601174 |
+| Họ và tên | Đào Chí Hiển |
+| MSSV | 2A202601066 |
 | Khóa/Lớp | K4 |
 | Tên nhóm | A8 |
-| Vai trò chính | Integration & Comparison |
+| Vai trò chính | Source Ingestion |
 | Repository | https://github.com/doclautc-1808/K4_Day10_Data-Pipeline-Data-Observability |
 | Ngày hoàn thành | 2026-08-06 |
 
@@ -18,27 +18,26 @@
 
 | Module/deliverable | File/hàm phụ trách | Input nhận vào | Output bàn giao | Trạng thái |
 | --- | --- | --- | --- | --- |
-| Baseline integration | `src/pipelines/phase1.py` — `main`, validation và artifact helpers | Raw Crossref snapshot cùng các module cleaning, index, evaluation và observability | Clean artifacts, baseline index, answers, metrics, quality/freshness và `phase1_report.md` | Hoàn thành, đã chạy end-to-end |
-| Corruption/repair comparison | `src/pipelines/corruption_flow.py` — `main` và các preflight helpers | Baseline artifacts, frozen test set, corruption function và raw snapshot | Corrupted/repaired datasets, indexes, answers, metrics, quality/freshness và `corruption_report.md` | Hoàn thành, đã chạy end-to-end |
+| Source ingestion | `src/ingestion/crossref.py` — `fetch_source_records`, `parse_crossref_payload`, `load_raw_records` | Crossref API response và cấu hình query/filter | `data/raw/crossref_response.json`, `data/raw/crossref_records.json` | Hoàn thành, raw artifacts đã sẵn sàng cho cleaning |
+| Raw artifact traceability | `src/core/config.py` + `src/ingestion/crossref.py` | Settings paths và raw payload | Traceable raw artifacts với schema `PaperRecord` | Hoàn thành |
 
 ### Việc hỗ trợ ngoài phạm vi chính
 
 | Hoạt động | Thành viên/module được hỗ trợ | Kết quả |
 | --- | --- | --- |
-| Rà soát contract tích hợp | Ingestion, cleaning, retrieval, evaluation và observability | Xác nhận chữ ký hàm, schema và đường dẫn artifact trước khi orchestration |
-| Kiểm tra bằng chứng đầu ra | Corruption và observability | Đối chiếu corruption log, quality/freshness signals và metric delta trong comparison report |
+| Cung cấp nguồn dữ liệu thô | Cleaning, evaluation và orchestration | Đảm bảo raw records có title/summary/authors và published date chuẩn; hỗ trợ tạo `papers_clean.json` và `test_set.json` |
+| Đối chiếu contract | Cleaning, observability và corruption | Xác nhận trường dữ liệu, tên file và định dạng JSON phù hợp trước khi chạy `script/run_phase1.py` và `script/run_corruption_flow.py` |
 
 ## 3. Kết quả theo vai trò
 
 | Nhiệm vụ đã thực hiện | File/hàm/artifact liên quan | Kết quả bàn giao | Cách xác minh |
 | --- | --- | --- | --- |
-| Tích hợp baseline raw → clean → index → evaluate → observe → report | `src/pipelines/phase1.py` | 24 clean records, 15 evaluation samples, baseline retrieval hit rate `1.0000` | `.venv/bin/python script/run_phase1.py` và `data/results/baseline_metrics.json` |
-| Validate frozen test set với clean corpus | `_validate_test_set` | Phát hiện sớm sample thiếu field, duplicate ID hoặc ground-truth document ID không tồn tại | Baseline flow hoàn thành với 15/15 sample hợp lệ |
-| Bảo vệ artifact theo ba trạng thái | `_ensure_separate_state_paths` | Baseline, corrupted và repaired dùng JSON, manifest, metrics và answers paths riêng | Ba manifest và ba bộ metrics tồn tại độc lập trong `data/` |
-| Điều phối corruption và rebuild index | `src/pipelines/corruption_flow.py` | Corrupted retrieval hit rate giảm từ `1.0000` xuống `0.6000` | `data/results/corrupted_metrics.json` |
-| Repair từ raw snapshot và so sánh | `src/pipelines/corruption_flow.py` | Repaired retrieval hit rate phục hồi về `1.0000`; comparison report có delta | `data/results/repaired_metrics.json` và `data/reports/corruption_report.md` |
+| Ingestion Crossref và ghi raw artifacts | `src/ingestion/crossref.py` | `data/raw/crossref_response.json` và `data/raw/crossref_records.json` với 24 records | `python -m src.ingestion.crossref`/script entrypoint và inspect file JSON |
+| Định nghĩa schema `PaperRecord` | `src/ingestion/crossref.py` | Structured raw record với fields cần thiết cho cleaning và embed | Readme/contract trong `group_report.md` và `data/raw/crossref_records.json` |
+| Hỗ trợ source traceability | `src/core/config.py` | Đường dẫn artifact raw rõ ràng, không ghi đè, dễ sử dụng bởi `phase1` và `corruption_flow` | Kiểm tra file paths trong config và `data/raw/` directory |
+| Hỗ trợ review đầu ra | `data/raw/*`, `script/run_phase1.py` | Phản hồi về các record missing summary hoặc missing publication date trước khi bước cleaning | Đối chiếu `data/raw/crossref_records.json` và quality report đầu vào |
 
-Output tiêu biểu là `data/reports/corruption_report.md`. Báo cáo chứng minh cùng một test set có retrieval hit rate `1.0000 → 0.6000 → 1.0000`, đồng thời token F1, judge accuracy và mean judge score cũng giảm rồi phục hồi.
+Output trọng tâm là raw ingestion; những artifact này là nền tảng cho cả baseline và corruption/repaired evaluation.
 
 ## 4. Giải thích phần kỹ thuật đã thực hiện
 
@@ -141,5 +140,5 @@ Tôi sẽ thêm một baseline acceptance gate cho publication date: hoặc lo�
 - [x] Báo cáo không chứa `.env`, API key, token hoặc secret.
 - [x] Báo cáo này không phải bản sao nguyên văn của báo cáo nhóm hoặc báo cáo thành viên khác.
 
-**Họ và tên:** Trần Thanh Bình
+**Họ và tên:** Đào Chí Hiển
 **Ngày xác nhận:** 2026-08-06
