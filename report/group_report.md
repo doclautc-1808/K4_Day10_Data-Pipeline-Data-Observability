@@ -7,7 +7,7 @@
 | Thông tin         | Nội dung                  |
 | ------------------ | -------------------------- |
 | Khóa/Lớp         | [K4]              |
-| Tên nhóm         | [A8]     |
+| Tên nhóm         | [My3Mien]     |
 | Repository         | [https://github.com/doclautc-1808/K4_Day10_Data-Pipeline-Data-Observability] |
 | Ngày hoàn thành | [2026-06-08]               |
 
